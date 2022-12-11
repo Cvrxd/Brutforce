@@ -235,24 +235,28 @@ namespace crypt
                 std::cout << "Given an empty set of characters. Using default: " << setOfCharacters << '\n';
             }
 
+            DecryptorAes decryptor(pathToFile);
+            if (!decryptor.isInitialized())
+                return std::nullopt;
+
             if (!lenghtOfPassword)
             {
                 size_t lenght{ 0 };
                 while (true)
                 {
-                    if (auto opt = Brutforce(++lenght, pathToFile, setOfCharacters, pathToLog); opt != std::nullopt)
-                    {
-                        password = opt.value().second;
-                        ret = opt.value().first;
+                    if (Brutforce(decryptor, ++lenght, setOfCharacters, pathToLog))
+                    { 
+                        ret = decryptor.getDecryptedData();
+                        password = decryptor.getPassword();
                     }    
                 }
             }
             else
             {
-                if (auto opt = Brutforce(lenghtOfPassword, pathToFile, setOfCharacters, pathToLog); opt != std::nullopt)
+                if (Brutforce(decryptor, lenghtOfPassword, setOfCharacters, pathToLog))
                 {
-                    password = opt.value().second;
-                    ret = opt.value().first;
+                    ret = decryptor.getDecryptedData();
+                    password = decryptor.getPassword();
                 }
             }
           
@@ -276,14 +280,12 @@ namespace crypt
         return ret;
     }
 
-
-
-    std::optional<std::pair<std::vector<unsigned char>, std::string>> Brutforce(int size_password, std::string_view pathToFile, std::string_view setOfCharacters, std::string_view pathToLog)
+    bool Brutforce(DecryptorAes& decryptor, int size_password, std::string_view setOfCharacters, std::string_view pathToLog)
     {
-        bool cycle      = true;
-        bool founded    = false;
-        int size_chars  = setOfCharacters.size();
-        int* indexer    = new int[size_password] (0);
+        bool cycle = true;
+        bool founded = false;
+        int size_chars = setOfCharacters.size();
+        int* indexer = new int[size_password](0);
 
         std::string str_bruteforce;
         str_bruteforce.resize(size_password);
@@ -304,41 +306,41 @@ namespace crypt
                 }
             }
 
-            for (int i = 0; i < size_password; ++i) 
+            for (int i = 0; i < size_password; ++i)
                 str_bruteforce[i] = setOfCharacters[indexer[i]];
 
             cycle = true;
 
-            PasswordToKey(str_bruteforce);
+            decryptor.passwordToKey(str_bruteforce);
 
             if (!pathToLog.empty())
                 AppendToFile(pathToLog.data(), str_bruteforce);
 
-            if (auto opt = Decrypt(pathToFile); opt != std::nullopt)
+            if (auto opt = decryptor.decrypt(); opt != std::nullopt)
             {
                 delete[] indexer;
-                return std::make_pair(opt.value(), str_bruteforce);
-            } 
+                return true;
+            }
 
             if (!cycle) break;
 
             cycle = false;
-            for (int i = 0; i < size_password; ++i) 
+            for (int i = 0; i < size_password; ++i)
             {
-                if (indexer[i] != size_chars - 1) 
+                if (indexer[i] != size_chars - 1)
                 {
                     cycle = true;
                     break;
                 }
-            } 
+            }
             if (!cycle) break;
 
             indexer[size_password - 1]++;
         }
         if (!founded)
-            std::cout << "Unable to find password with lenght "<< size_password << std::endl;
+            std::cout << "Unable to find password with lenght " << size_password << std::endl;
 
         delete[] indexer;
-        return std::nullopt;
+        return false;
     }
 }

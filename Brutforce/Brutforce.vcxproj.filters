@@ -9,25 +9,33 @@
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
     </Filter>
-    <Filter Include="Resource Files">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    <Filter Include="Tools">
+      <UniqueIdentifier>{58bb8aa7-75bb-46ed-b8c6-b20137743b32}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SSL">
+      <UniqueIdentifier>{eaad3f93-6d2a-4ed6-bd94-342e89a2efe6}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Encrypt.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\Source.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Encrypt.cpp">
+      <Filter>SSL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\DecryptorAes.cpp">
+      <Filter>SSL</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Encrypt.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\Timer.h">
-      <Filter>Source Files</Filter>
+      <Filter>Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Encrypt.h">
+      <Filter>SSL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\DecryptorAes.h">
+      <Filter>SSL</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

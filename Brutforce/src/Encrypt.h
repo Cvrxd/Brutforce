@@ -1,6 +1,5 @@
 #pragma once
 
-
 #include <windows.h>
 #include <string>
 #include <vector>
@@ -16,6 +15,9 @@
 #include <openssl/sha.h>
 
 #include "Timer.h"
+#include "DecryptorAes.h"
+
+class DecryptorAes;
 
 namespace crypt
 {
@@ -39,5 +41,5 @@ namespace crypt
     
     //Brutforce decrtption
     std::optional<std::vector<unsigned char>> BrutforceDecrypt(std::string_view pathToFile, int lenghtOfPassword = 0, std::string_view setOfCharacters = "", std::string_view pathToLog = "");
-    std::optional<std::pair<std::vector<unsigned char>, std::string>> Brutforce(int size_password, std::string_view pathToFile, std::string_view setOfCharacters, std::string_view pathToLog);
+    bool Brutforce(DecryptorAes& decryptor, int size_password, std::string_view setOfCharacters, std::string_view pathToLog);
 }

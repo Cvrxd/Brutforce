@@ -19,10 +19,12 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\DecryptorAes.cpp" />
     <ClCompile Include="src\Encrypt.cpp" />
     <ClCompile Include="src\Source.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\DecryptorAes.h" />
     <ClInclude Include="src\Encrypt.h" />
     <ClInclude Include="src\Timer.h" />
   </ItemGroup>
