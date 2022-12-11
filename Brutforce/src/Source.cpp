@@ -1,4 +1,4 @@
-#include "Encrypt.h"
+#include "Brutforce.h"
 
 int main(int argc, char* argv[])
 {
@@ -6,18 +6,18 @@ int main(int argc, char* argv[])
     {
         if (argc != 5)
         {
-            std::cout << "Not enough parameters\n";
+            std::cout << "Not enough arguments\n";
             return 1;
         }
-        std::string pathToFile = argv[0];
-        std::string charactersSet = argv[1];
+        std::string pathToFile              = argv[0];
+        std::string charactersSet           = argv[1];
         std::string pathToSaveDecryptedData = argv[2];
-        std::string pathToSavePasswords = argv[3];
-        int lenghtOfPassword = std::atoi(argv[4]);
+        std::string pathToSavePasswords     = argv[3];
+        int lenghtOfPassword                = std::atoi(argv[4]);
 
-        if (auto decriptionData = crypt::BrutforceDecrypt(pathToFile, lenghtOfPassword, charactersSet, pathToSavePasswords); decriptionData != std::nullopt)
+        if (auto decriptionData = brutforce::BrutforceDecrypt(pathToFile, lenghtOfPassword, charactersSet, pathToSavePasswords); decriptionData != std::nullopt)
         {
-            if (!crypt::WriteFile(pathToSaveDecryptedData, decriptionData.value()))
+            if (!tools::WriteFile(pathToSaveDecryptedData, decriptionData.value()))
                 std::cout << "Unable to save decrypted data to file: " << pathToSaveDecryptedData << '\n';
         }
     }

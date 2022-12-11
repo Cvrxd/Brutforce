@@ -6,7 +6,7 @@ DecryptorAes::DecryptorAes(std::string_view pathToFile, unsigned int hashSize)
 {
     if (fs::exists(pathToFile))
     {
-        if (!crypt::ReadFile(pathToFile.data(), m_encryptedData))
+        if (!tools::ReadFile(pathToFile.data(), m_encryptedData))
             m_encryptedData.clear();
         else
         {
@@ -43,7 +43,7 @@ DecryptorAes::opt_symbols_data DecryptorAes::decrypt()
         if (decryptAes())
         {
             symbols_data originalHash;
-            crypt::CalculateHash(m_decryptedData, originalHash);
+            tools::CalculateHash(m_decryptedData, originalHash);
             if (originalHash == m_hash)
                 ret = m_decryptedData;
         }

@@ -19,14 +19,22 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Brutforce.cpp" />
+    <ClCompile Include="src\Decrypt.cpp" />
     <ClCompile Include="src\DecryptorAes.cpp" />
     <ClCompile Include="src\Encrypt.cpp" />
+    <ClCompile Include="src\File.cpp" />
     <ClCompile Include="src\Source.cpp" />
+    <ClCompile Include="src\Tools.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Brutforce.h" />
+    <ClInclude Include="src\Decrypt.h" />
     <ClInclude Include="src\DecryptorAes.h" />
     <ClInclude Include="src\Encrypt.h" />
+    <ClInclude Include="src\File.h" />
     <ClInclude Include="src\Timer.h" />
+    <ClInclude Include="src\Tools.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

@@ -15,27 +15,69 @@
     <Filter Include="SSL">
       <UniqueIdentifier>{eaad3f93-6d2a-4ed6-bd94-342e89a2efe6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="SSL\Encription">
+      <UniqueIdentifier>{dd930cd2-f436-422a-bb0e-fe7208a0efb3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SSL\Decription">
+      <UniqueIdentifier>{b6e3ef1f-2201-4fbb-a748-1c00f9c500f5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SSL\DecryptorAes">
+      <UniqueIdentifier>{914f1029-d9e7-430e-9bfd-b4a80dc09f97}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Tools\File">
+      <UniqueIdentifier>{34b9c6db-177d-4c01-a1bd-4954e9c383fd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Tools\Timer">
+      <UniqueIdentifier>{e3badfaf-df33-4a2c-b5ff-e440e7babe9c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SSL\Brutforce">
+      <UniqueIdentifier>{cbddbf3a-f35d-4877-a460-09164cd28d9e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Source.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Encrypt.cpp">
-      <Filter>SSL</Filter>
+      <Filter>SSL\Encription</Filter>
     </ClCompile>
     <ClCompile Include="src\DecryptorAes.cpp">
-      <Filter>SSL</Filter>
+      <Filter>SSL\DecryptorAes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Decrypt.cpp">
+      <Filter>SSL\Decription</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Tools.cpp">
+      <Filter>Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="src\File.cpp">
+      <Filter>Tools\File</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Brutforce.cpp">
+      <Filter>SSL\Brutforce</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Timer.h">
-      <Filter>Tools</Filter>
-    </ClInclude>
     <ClInclude Include="src\Encrypt.h">
-      <Filter>SSL</Filter>
+      <Filter>SSL\Encription</Filter>
     </ClInclude>
     <ClInclude Include="src\DecryptorAes.h">
-      <Filter>SSL</Filter>
+      <Filter>SSL\DecryptorAes</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Decrypt.h">
+      <Filter>SSL\Decription</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Tools.h">
+      <Filter>Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="src\File.h">
+      <Filter>Tools\File</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Timer.h">
+      <Filter>Tools\Timer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Brutforce.h">
+      <Filter>SSL\Brutforce</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
